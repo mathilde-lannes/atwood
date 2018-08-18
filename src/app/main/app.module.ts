@@ -4,16 +4,22 @@ import '../../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { ElectronService } from '../providers/electron.service';
 
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from '../home/home.component';
+import { EditFileComponent } from '../edit/edit-file.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,13 +28,17 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    EditFileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    CodemirrorModule,
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -37,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
+  providers: [ElectronService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
