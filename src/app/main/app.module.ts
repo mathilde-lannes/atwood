@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     CodemirrorModule,
     NgbModule,
+    MarkdownModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,12 +1,21 @@
 <div>
-    <div class="col-xs-6">
+    <div id="text-editor"
+        class="col-xs-6"
+    >
         <ngx-codemirror 
             [(ngModel)]="textContent" 
             [options]="{
                 lineNumbers: true,
                 theme: 'icecoder',
-                mode: 'markdown'
+                mode: 'markdown',
+                indentUnit: 0,
+                smartIndent: false,
+                keyMap: 'sublime'
             }"
         ></ngx-codemirror>
+    </div>
+
+    <div class="col-xs-6 text-preview">
+        <markdown [data]="textContent"></markdown>
     </div>
 </div>
